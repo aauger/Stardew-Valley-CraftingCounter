@@ -8,6 +8,7 @@ using StardewValley.Menus;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using System.Reflection;
 
 namespace CraftingCounter
 {
@@ -23,10 +24,6 @@ namespace CraftingCounter
         {
             GraphicsEvents.OnPostRenderGuiEvent += GraphicsEvents_OnPostRenderGuiEvent;
         }
-
-
-
-
 
         /*********
         ** Private methods
@@ -60,7 +57,7 @@ namespace CraftingCounter
                     .GetPrivateField<CraftingRecipe>(cpage, "hoverRecipe").GetValue();
                 Point p = Game1.getMousePosition();
 
-                if (cr != null)
+                if (cpage != null && cr != null)
                 {
                     DrawHoverTextBox(Game1.smallFont, "Number crafted: " + Game1.player.craftingRecipes[cr.name],
                         p.X + 31, p.Y - 30);
